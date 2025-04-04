@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wichtige Git Befehle</title>
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f9; /* Heller Hintergrund */
+            color: #333; /* Dunkle Textfarbe für Lesbarkeit */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff; /* Weißer Kasten für Inhalt */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+        }
+
+        /* Titel */
+        h1 {
+            color: #2c3e50; /* Dunkelblau */
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db; /* Blaue Unterstreichung */
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #3498db; /* Hellblau */
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        /* Code-Blöcke für Befehle */
+        code {
+            background-color: #eef1f3; /* Sehr heller graublauer Hintergrund */
+            color: #c0392b; /* Dunkelrote Textfarbe für Code */
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        /* Befehlsblöcke (Überschrift + Erklärung) */
+        .command-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid #3498db; /* Blauer linker Rand */
+            background-color: #fdfdfe; /* Fast weißer Hintergrund */
+            border-radius: 0 4px 4px 0;
+        }
+
+        .command-block h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #2980b9; /* Etwas dunkleres Blau für Befehlsüberschrift */
+        }
+
+        .command-block h3 code {
+             font-size: 1.05em; /* Code in Überschriften leicht größer */
+        }
+
+        .command-block p {
+            margin-bottom: 0;
+            color: #555; /* Etwas hellere Textfarbe für Erklärungen */
+        }
+
+        /* Hervorhebung von Dateinamen/URLs/Branches in Code-Tags */
+        code .placeholder {
+            color: #8e44ad; /* Violett für Platzhalter */
+            font-style: italic;
+        }
+
+        /* Optional: Ein kleiner Footer */
+         footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Git Befehlsübersicht</h1>
+        <p>Git ist ein mächtiges Werkzeug zur Versionskontrolle. Hier sind einige der wichtigsten Befehle für den täglichen Gebrauch:</p>
+
+        <h2>Setup & Initialisierung</h2>
+        <div class="command-block">
+            <h3><code>git config --global user.name "<span class="placeholder">Dein Name</span>"</code></h3>
+            <p>Setzt den Namen, der für alle deine Commits global verwendet wird.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git config --global user.email "<span class="placeholder">deine.email@example.com</span>"</code></h3>
+            <p>Setzt die E-Mail-Adresse, die für alle deine Commits global verwendet wird.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git init</code></h3>
+            <p>Initialisiert ein neues, leeres Git-Repository im aktuellen Verzeichnis.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git clone <span class="placeholder">&lt;repository_url&gt;</span></code></h3>
+            <p>Erstellt eine lokale Kopie eines entfernten Repositories (z.B. von GitHub).</p>
+        </div>
+
+        <h2>Grundlegender Workflow</h2>
+         <div class="command-block">
+            <h3><code>git status</code></h3>
+            <p>Zeigt den Status der Dateien im Arbeitsverzeichnis und im Staging-Bereich an (geänderte, neue, gestagete Dateien).</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git add <span class="placeholder">&lt;datei&gt;</span></code> oder <code>git add .</code></h3>
+            <p>Fügt Änderungen einer Datei (oder aller Dateien mit <code>.</code>) zum Staging-Bereich hinzu ("vormerken" für den nächsten Commit).</p>
+        </div>
+         <div class="command-block">
+            <h3><code>git commit -m "<span class="placeholder">Deine Commit-Nachricht</span>"</code></h3>
+            <p>Speichert die Änderungen aus dem Staging-Bereich dauerhaft im Repository mit einer beschreibenden Nachricht.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git log</code></h3>
+            <p>Zeigt die Commit-Historie des aktuellen Branches an.</p>
+        </div>
+
+        <h2>Branching & Merging</h2>
+        <div class="command-block">
+            <h3><code>git branch</code></h3>
+            <p>Listet alle lokalen Branches auf. Der aktuell aktive Branch ist mit einem <code>*</code> markiert.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git branch <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Erstellt einen neuen Branch basierend auf dem aktuellen Commit.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git checkout <span class="placeholder">&lt;branchname&gt;</span></code> oder <code>git switch <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Wechselt zum angegebenen Branch und aktualisiert das Arbeitsverzeichnis.</p>
+        </div>
+         <div class="command-block">
+            <h3><code>git checkout -b <span class="placeholder">&lt;branchname&gt;</span></code> oder <code>git switch -c <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Erstellt einen neuen Branch und wechselt sofort zu ihm.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git merge <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Führt die Änderungen vom `<branchname>` in den aktuellen Branch zusammen (Merge).</p>
+        </div>
+
+        <h2>Arbeiten mit Remotes (z.B. GitHub)</h2>
+        <div class="command-block">
+            <h3><code>git remote -v</code></h3>
+            <p>Zeigt die konfigurierten entfernten Repositories (Remotes) mit ihren URLs an.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git fetch <span class="placeholder">&lt;remote_name&gt;</span></code></h3>
+            <p>Lädt alle Änderungen (neue Commits, Branches) vom Remote-Repository herunter, führt sie aber noch NICHT mit deiner lokalen Arbeit zusammen.</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git pull <span class="placeholder">&lt;remote_name&gt;</span> <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Lädt Änderungen vom Remote herunter UND versucht, sie automatisch mit deinem aktuellen lokalen Branch zusammenzuführen (entspricht `git fetch` + `git merge`).</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git push <span class="placeholder">&lt;remote_name&gt;</span> <span class="placeholder">&lt;branchname&gt;</span></code></h3>
+            <p>Lädt deine lokalen Commits und Branches zum Remote-Repository hoch.</p>
+        </div>
+
+        <h2>Untersuchen & Vergleichen</h2>
+        <div class="command-block">
+            <h3><code>git diff</code></h3>
+            <p>Zeigt die Unterschiede zwischen deinem Arbeitsverzeichnis und dem Staging-Bereich an (Änderungen, die noch nicht mit `git add` hinzugefügt wurden).</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git diff --staged</code> oder <code>git diff --cached</code></h3>
+            <p>Zeigt die Unterschiede zwischen dem Staging-Bereich und dem letzten Commit an (Änderungen, die mit `git add` hinzugefügt, aber noch nicht committed wurden).</p>
+        </div>
+        <div class="command-block">
+            <h3><code>git show <span class="placeholder">&lt;commit_hash&gt;</span></code></h3>
+            <p>Zeigt detaillierte Informationen zu einem bestimmten Commit an (Autor, Datum, Nachricht, geänderte Dateien).</p>
+        </div>
+
+        <footer>
+            Viel Erfolg beim Arbeiten mit Git!
+        </footer>
+    </div>
+
+</body>
+</html>
